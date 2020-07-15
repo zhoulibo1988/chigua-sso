@@ -1,8 +1,8 @@
 package com.xxl.sso.sample.controller;
 
-import com.xxl.sso.core.conf.Conf;
-import com.xxl.sso.core.entity.ReturnT;
-import com.xxl.sso.core.user.XxlSsoUser;
+import com.chigua.sso.core.conf.Conf;
+import com.chigua.sso.core.entity.ReturnT;
+import com.chigua.sso.core.user.ChiGuaSsoUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,15 +19,15 @@ public class IndexController {
     @RequestMapping("/")
     public String index(Model model, HttpServletRequest request) {
 
-        XxlSsoUser xxlUser = (XxlSsoUser) request.getAttribute(Conf.SSO_USER);
+        ChiGuaSsoUser xxlUser = (ChiGuaSsoUser) request.getAttribute(Conf.SSO_USER);
         model.addAttribute("xxlUser", xxlUser);
         return "index";
     }
 
     @RequestMapping("/json")
     @ResponseBody
-    public ReturnT<XxlSsoUser> json(Model model, HttpServletRequest request) {
-        XxlSsoUser xxlUser = (XxlSsoUser) request.getAttribute(Conf.SSO_USER);
+    public ReturnT<ChiGuaSsoUser> json(Model model, HttpServletRequest request) {
+        ChiGuaSsoUser xxlUser = (ChiGuaSsoUser) request.getAttribute(Conf.SSO_USER);
         return new ReturnT(xxlUser);
     }
 
